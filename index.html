@@ -126,7 +126,7 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
 .band.hidden { display: none; }
 .band .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:16px 32px;align-items:center}
 .band h3{font-size:clamp(24px,3.8vw,40px);line-height:1.1;letter-spacing:-.025em;font-weight:800;margin:0 0 6px;transition:transform .3s ease}
-.band p{margin:0;max-width:28em;font-size:16px}
+.band p{margin:0;max-width:28em;font-size:16px;opacity:0.92}
 .side{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
 .tags span{font:12px 'Fira Code',ui-monospace,monospace;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;transition:background .2s,color .2s}
@@ -137,7 +137,7 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
 .band a.go:hover .arrow{transform:translateX(5px)}
 .band a.go:hover{background-size:100% 100%;color:var(--b)}
 
-/* Code Background */
+/* Code Background watermark */
 .band::before {
   content: attr(data-code);
   font-family: 'Fira Code', monospace;
@@ -145,7 +145,7 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
   position: absolute;
   right: 3%;
   bottom: 10%;
-  opacity: 0.14;
+  opacity: 0.15;
   pointer-events: none;
   white-space: pre;
   text-align: right;
@@ -153,12 +153,12 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
   user-select: none;
 }
 
-/* Original Theme Colors */
-.b1{--b:#f6d9e1;background:var(--b);color:#8a2442}
-.b2{--b:#e8ed73;background:var(--b);color:#1b2380}
-.b3{--b:#dcebdf;background:var(--b);color:#1f4a33}
-.b4{--b:#f1c85a;background:var(--b);color:#4f3300}
-.b5{--b:#b5461c;background:var(--b);color:#fff}
+/* Darker & Richer Project Colors */
+.b1{--b:#631a31;background:var(--b);color:#fbcfe8}
+.b2{--b:#1e295d;background:var(--b);color:#e0e7ff}
+.b3{--b:#14452f;background:var(--b);color:#d1fae5}
+.b4{--b:#633e06;background:var(--b);color:#fef3c7}
+.b5{--b:#5c1d18;background:var(--b);color:#ffe4e6}
 
 .tools,.contact{padding:36px 0 8px}
 .tool-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
@@ -270,10 +270,10 @@ footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);fo
     <div class="wrap">
       <div>
         <h3>Strawberry House Menu</h3>
-        <p>A playful digital menu for a restaurant and cafe, designed for phones.</p>
+        <p>A playful digital menu for a restaurant and tea room: breakfast, lunch, salads, drinks and desserts, designed for phones.</p>
       </div>
       <div class="side">
-        <div class="tags"><span>Web</span><span>Design</span></div>
+        <div class="tags"><span>Web</span><span>Custom domain</span></div>
         <a class="go" href="https://menupage.tech" target="_blank" rel="noopener">Visit menupage.tech <span class="arrow">→</span></a>
       </div>
     </div>
@@ -284,7 +284,7 @@ footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);fo
     <div class="wrap">
       <div>
         <h3>The Complete Shelf</h3>
-        <p>An interactive 3D bookshelf with seven original short stories.</p>
+        <p>An interactive 3D bookshelf with seven original short stories. Open a book, spin the scene and read.</p>
       </div>
       <div class="side">
         <div class="tags"><span>Three.js</span><span>Netlify</span></div>
@@ -325,8 +325,8 @@ footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);fo
   <section class="band b5" data-category="menu" data-code="const dishes = [&#10; 'Qoozi', 'Curry'&#10;];">
     <div class="wrap">
       <div>
-        <h3>Iraqi Menu</h3>
-        <p>A restaurant menu with swipeable dish cards and search.</p>
+        <h3>Kerala Curry House</h3>
+        <p>A restaurant menu with swipeable dish cards and search, featuring Iraqi dishes like qoozi.</p>
       </div>
       <div class="side">
         <div class="tags"><span>Replit</span></div>
