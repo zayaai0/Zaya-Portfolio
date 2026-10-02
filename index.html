@@ -12,111 +12,166 @@
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101015;--ink:#f1f1f6;--mute:#a2a5b8;--line:#2a2b38;--btn:#f1f1f6;--btn-ink:#101015;--code-bg:rgba(255, 255, 255, 0.04);--code-border:rgba(255, 255, 255, 0.12)}}
 :root[data-theme="dark"]{--bg:#101015;--ink:#f1f1f6;--mute:#a2a5b8;--line:#2a2b38;--btn:#f1f1f6;--btn-ink:#101015;--code-bg:rgba(255, 255, 255, 0.04);--code-border:rgba(255, 255, 255, 0.12)}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;font-size:16px;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:3px solid currentColor;outline-offset:3px;border-radius:4px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 
-nav{display:flex;gap:22px;padding:14px 0;font-weight:500;align-items:center}
-nav a{text-decoration:none;color:var(--mute);transition:color 0.2s}
-nav a:hover{color:var(--ink)}
+nav.top-nav{display:flex;gap:22px;padding:14px 0;font-weight:500;align-items:center}
+nav.top-nav a{text-decoration:none;color:var(--mute);transition:color 0.2s}
+nav.top-nav a:hover{color:var(--ink)}
 
-/* Unified IDE Window Hero Section */
-.hero-window {
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  border-radius: 14px;
-  padding: 18px 24px 24px;
-  margin: 10px 0 20px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+/* Hero Section without Outer Frame */
+.hero-section {
+  padding: 10px 0 28px;
+  margin-bottom: 20px;
 }
 
-/* Dots on Left, Title on Right */
-.window-header {
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+h1{font-size:clamp(34px,6.5vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:0 0 10px}
+.lead{font-size:clamp(15px,1.8vw,18px);color:var(--mute);max-width:32em;margin:0 0 20px}
+.typing-text{color:var(--ink);font-weight:600;border-bottom:2px solid var(--ink)}
+
+/* --- Windows Terminal Styling (Sharp Rectangular Corners) --- */
+.win-terminal {
+  background: rgba(18, 18, 24, 0.95);
+  color: #f8f8f2;
+  border-radius: 0px; /* زوايا مستطيلة حادة */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  overflow: hidden;
+  position: relative;
+  direction: ltr;
+  font-family: 'Fira Code', monospace;
+}
+
+.win-header {
+  background: rgba(30, 30, 40, 0.98);
+  padding: 8px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--code-border);
-  direction: ltr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  user-select: none;
 }
-.dots-container {
+
+.win-title {
   display: flex;
   align-items: center;
-  gap: 7px;
-}
-.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
-
-.code-title {
-  font-family: 'Fira Code', monospace;
-  font-size: 12px;
-  color: var(--mute);
-  font-weight: 500;
-}
-
-.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:28px;align-items:center}
-h1{font-size:clamp(34px,6.5vw,64px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:0 0 10px}
-.lead{font-size:clamp(15px,1.8vw,18px);color:var(--mute);max-width:32em;margin:0 0 18px}
-.typing-text{color:var(--ink);font-weight:600;border-bottom:2px solid var(--ink)}
-
-/* Strict LTR Code Block */
-.hero-code-block {
-  font-family: 'Fira Code', monospace;
-  font-size: 13.5px;
-  line-height: 1.6;
-  background: rgba(0, 0, 0, 0.03);
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px dashed var(--code-border);
-  direction: ltr;
-  text-align: left;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .hero-code-block { background: rgba(255, 255, 255, 0.03); }
-}
-:root[data-theme="dark"] .hero-code-block { background: rgba(255, 255, 255, 0.03); }
-
-.hero-code-block pre { margin: 0; white-space: pre-wrap; word-break: break-word; }
-.k { color: #e06c75; font-weight: 600; }
-.s { color: #98c379; }
-.p { color: #d19a66; }
-
-.btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:2px solid var(--btn);color:var(--ink);background:transparent;transition:transform .2s ease, background-color .2s ease;cursor:pointer;font-size:14.5px}
-.btn.main{background:var(--btn);color:var(--btn-ink)}
-.btn:hover{transform:translateY(-2px)}
-.btn svg{fill:currentColor;flex-shrink:0}
-
-/* Filter Tabs */
-.filter-container {
-  display: flex;
   gap: 8px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--mute);
-  padding: 5px 14px;
-  border-radius: 20px;
-  font-family: inherit;
-  font-size: 13.5px;
+  font-size: 12px;
+  color: #a0a0b0;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
-.filter-btn.active, .filter-btn:hover {
+.win-title svg { fill: #61afef; }
+
+.win-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #a0a0b0;
+  font-size: 12px;
+}
+.win-btn { cursor: pointer; transition: color 0.2s; }
+.win-btn:hover { color: #fff; }
+
+.win-body {
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  position: relative;
+  min-height: 175px;
+}
+
+.prompt { color: #61afef; font-weight: 600; }
+.cmd { color: #98c379; }
+.p-key { color: #e06c75; }
+.p-str { color: #e5c07b; }
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #61afef;
+  vertical-align: middle;
+  animation: blink 1s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Floating Tech Emojis & Interactive Badges */
+.float-badge {
+  position: absolute;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  pointer-events: auto;
+  cursor: default;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.float-badge:hover {
+  transform: scale(1.1) translateY(-3px) !important;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.fb1 { top: 15px; right: 15px; color: #ffd166; animation: float1 3.8s ease-in-out infinite alternate; }
+.fb2 { bottom: 40px; right: 20px; color: #4cc9f0; animation: float2 4.2s ease-in-out infinite alternate; }
+.fb3 { bottom: 12px; left: 130px; color: #06d6a0; animation: float1 3.5s ease-in-out 0.5s infinite alternate; }
+
+@keyframes float1 {
+  0% { transform: translateY(0px) rotate(-2deg); }
+  100% { transform: translateY(-8px) rotate(2deg); }
+}
+@keyframes float2 {
+  0% { transform: translateY(0px) rotate(3deg); }
+  100% { transform: translateY(-6px) rotate(-2deg); }
+}
+
+/* Sticky Line Tabs Filter Bar */
+.sticky-nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  margin-bottom: 24px;
+}
+.tabs-container {
+  display: flex;
+  gap: 28px;
+  position: relative;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-container::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--mute);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.tab-btn.active, .tab-btn:hover { color: var(--ink); }
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2.5px;
   background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  border-radius: 2px 2px 0 0;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
@@ -126,7 +181,7 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
 .band.hidden { display: none; }
 .band .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:16px 32px;align-items:center}
 .band h3{font-size:clamp(24px,3.8vw,40px);line-height:1.1;letter-spacing:-.025em;font-weight:800;margin:0 0 6px;transition:transform .3s ease}
-.band p{margin:0;max-width:28em;font-size:16px}
+.band p{margin:0;max-width:28em;font-size:16px;opacity:0.9}
 .side{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
 .tags span{font:12px 'Fira Code',ui-monospace,monospace;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;transition:background .2s,color .2s}
@@ -137,7 +192,6 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
 .band a.go:hover .arrow{transform:translateX(5px)}
 .band a.go:hover{background-size:100% 100%;color:var(--b)}
 
-/* Code Background watermark */
 .band::before {
   content: attr(data-code);
   font-family: 'Fira Code', monospace;
@@ -153,12 +207,12 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
   user-select: none;
 }
 
-/* Clean & Cohesive Pastel Identity Colors */
-.b1{--b:#fce7f3;background:var(--b);color:#831843}
-.b2{--b:#e0e7ff;background:var(--b);color:#1e1b4b}
-.b3{--b:#dcfce7;background:var(--b);color:#14532d}
-.b4{--b:#fef3c7;background:var(--b);color:#78350f}
-.b5{--b:#ffedd5;background:var(--b);color:#7c2d12}
+/* Soft & Eye-Friendly Palette */
+.b1{--b:#fdf2f8;background:var(--b);color:#831843}
+.b2{--b:#f0f3ff;background:var(--b);color:#2e3856}
+.b3{--b:#f0fdf4;background:var(--b);color:#166534}
+.b4{--b:#fefce8;background:var(--b);color:#854d0e}
+.b5{--b:#fff7ed;background:var(--b);color:#9a3412}
 
 .tools,.contact{padding:36px 0 8px}
 .tool-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
@@ -169,10 +223,14 @@ h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
 .contact p{color:var(--mute);max-width:30em;margin:0 0 16px}
 footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);font-size:14px;display:flex;justify-content:space-between;align-items:center}
 
-/* Responsive Media Queries */
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:2px solid var(--btn);color:var(--ink);background:transparent;transition:transform .2s ease, background-color .2s ease;cursor:pointer;font-size:14.5px}
+.btn.main{background:var(--btn);color:var(--btn-ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{fill:currentColor;flex-shrink:0}
+
 @media (max-width:850px){
   .hero-grid{grid-template-columns:1fr;gap:20px}
-  .hero-window{padding:16px 18px 20px}
 }
 @media (max-width:720px){
   .band .wrap{grid-template-columns:1fr;gap:14px}
@@ -202,34 +260,22 @@ footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);fo
   pointer-events: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-#toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+#toast.show { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <nav aria-label="Main">
+  <nav class="top-nav" aria-label="Main">
     <a href="#projects">Projects</a>
     <a href="#tools">Tools</a>
     <a href="#contact">Contact</a>
     <button class="theme" id="theme" aria-label="Switch light or dark theme">Theme</button>
   </nav>
 
-  <!-- Unified IDE Window -->
-  <header class="hero-window">
-    <div class="window-header">
-      <!-- Dots placed on the Left -->
-      <div class="dots-container">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
-      </div>
-      <span class="code-title">developer.ts</span>
-    </div>
-    
+  <!-- Hero Section -->
+  <header class="hero-section">
     <div class="hero-grid">
+      <!-- Profile Info With Buttons Restored -->
       <div class="hero-text">
         <h1>Zaya Al-Samarrai</h1>
         <p class="lead">Web Developer building <span class="typing-text" id="typewriter"></span></p>
@@ -242,25 +288,48 @@ footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);fo
         </div>
       </div>
       
-      <!-- Code Snippet -->
-      <div class="hero-code-block">
-        <pre><code><span class="k">import</span> { Developer } <span class="k">from</span> <span class="s">'zaya'</span>;
+      <!-- Rectangular Windows Terminal Box -->
+      <div class="win-terminal">
+        <div class="win-header">
+          <div class="win-title">
+            <svg width="14" height="14" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 14H5v-2h7v2zm.5-5l-1.42 1.42L7.66 11l3.42-3.42L12.5 9l-2 2 2 2z"/></svg>
+            Windows PowerShell - zaya@dev:~
+          </div>
+          <div class="win-controls">
+            <span class="win-btn">—</span>
+            <span class="win-btn">□</span>
+            <span class="win-btn">✕</span>
+          </div>
+        </div>
+        <div class="win-body">
+          <div><span class="prompt">PS C:\Zaya&gt;</span> <span class="cmd">cat developer.json</span></div>
+          <div style="margin: 6px 0 6px 12px;">
+            <span class="p-key">"role"</span>: <span class="p-str">"Web Developer"</span>,<br>
+            <span class="p-key">"skills"</span>: [<span class="p-str">"HTML"</span>, <span class="p-str">"CSS"</span>, <span class="p-str">"JS"</span>, <span class="p-str">"3D"</span>],<br>
+            <span class="p-key">"status"</span>: <span class="p-str">"Ready to build ✨"</span>
+          </div>
+          <div><span class="prompt">PS C:\Zaya&gt;</span> <span class="cursor"></span></div>
 
-<span class="k">const</span> profile = {
-  <span class="p">role</span>: <span class="s">'Web Developer'</span>,
-  <span class="p">skills</span>: [<span class="s">'HTML'</span>, <span class="s">'CSS'</span>, <span class="s">'JS'</span>, <span class="s">'3D'</span>],
-  <span class="p">status</span>: <span class="s">'Ready to build'</span>
-};</code></pre>
+          <!-- Interactive Floating Badges -->
+          <div class="float-badge fb1">⚡ JS & 3D</div>
+          <div class="float-badge fb2">🚀 Apps</div>
+          <div class="float-badge fb3">💻 Code</div>
+        </div>
       </div>
     </div>
   </header>
+</div>
 
-  <!-- Interactive Category Filter -->
-  <div class="filter-container">
-    <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
-    <button class="filter-btn" onclick="filterProjects('menu', this)">Menus</button>
-    <button class="filter-btn" onclick="filterProjects('web3d', this)">3D & Web</button>
-    <button class="filter-btn" onclick="filterProjects('app', this)">Apps</button>
+<!-- Sticky Line Navigation Tabs -->
+<div class="sticky-nav-wrapper">
+  <div class="wrap">
+    <div class="tabs-container" id="tabContainer">
+      <button class="tab-btn active" onclick="filterProjects('all', this)">All Projects</button>
+      <button class="tab-btn" onclick="filterProjects('menu', this)">Menus</button>
+      <button class="tab-btn" onclick="filterProjects('web3d', this)">3D & Web</button>
+      <button class="tab-btn" onclick="filterProjects('app', this)">Apps</button>
+      <span class="tab-indicator" id="tabIndicator"></span>
+    </div>
   </div>
 </div>
 
@@ -363,11 +432,10 @@ footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);fo
   </footer>
 </div>
 
-<!-- Toast Container -->
 <div id="toast">Copied to clipboard!</div>
 
 <script>
-// Dynamic Typewriter Effect
+// Typewriter Effect
 const phrases = [
   "fast & easy-to-use websites.",
   "interactive 3D stories.",
@@ -400,10 +468,18 @@ function type() {
 }
 type();
 
-// Project Filtering Logic
+// Tab Line Indicator Logic
+function updateIndicator(el) {
+  const indicator = document.getElementById("tabIndicator");
+  if (!el || !indicator) return;
+  indicator.style.left = el.offsetLeft + "px";
+  indicator.style.width = el.offsetWidth + "px";
+}
+
 function filterProjects(category, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  updateIndicator(btn);
 
   const bands = document.querySelectorAll('.band');
   bands.forEach(band => {
@@ -415,16 +491,17 @@ function filterProjects(category, btn) {
   });
 }
 
-// Copy To Clipboard Toast
-function copyText(text, message) {
-  navigator.clipboard.writeText(text);
-  const toast = document.getElementById("toast");
-  toast.textContent = message;
-  toast.classList.add("show");
-  setTimeout(() => toast.classList.remove("show"), 2500);
-}
+// Initial position on load and resize
+window.addEventListener('DOMContentLoaded', () => {
+  const activeBtn = document.querySelector('.tab-btn.active');
+  if (activeBtn) updateIndicator(activeBtn);
+});
+window.addEventListener('resize', () => {
+  const activeBtn = document.querySelector('.tab-btn.active');
+  if (activeBtn) updateIndicator(activeBtn);
+});
 
-// Dark/Light Theme Switch
+// Dark/Light Theme
 (function(){
   var r=document.documentElement;
   try{var t=localStorage.getItem("theme");if(t)r.setAttribute("data-theme",t)}catch(e){}
