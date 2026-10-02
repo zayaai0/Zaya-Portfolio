@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zaya Al-Samarrai | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfbfd;--ink:#16161d;--mute:#5d6070;--line:#dcdde6;--btn:#16161d;--btn-ink:#fff;--code-bg:rgba(22, 22, 29, 0.04);--code-border:rgba(22, 22, 29, 0.12);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101015;--ink:#f1f1f6;--mute:#a2a5b8;--line:#2a2b38;--btn:#f1f1f6;--btn-ink:#101015;--code-bg:rgba(255, 255, 255, 0.04);--code-border:rgba(255, 255, 255, 0.12)}}
+:root[data-theme="dark"]{--bg:#101015;--ink:#f1f1f6;--mute:#a2a5b8;--line:#2a2b38;--btn:#f1f1f6;--btn-ink:#101015;--code-bg:rgba(255, 255, 255, 0.04);--code-border:rgba(255, 255, 255, 0.12)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;font-size:16px;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+nav{display:flex;gap:22px;padding:14px 0;font-weight:500;align-items:center}
+nav a{text-decoration:none;color:var(--mute);transition:color 0.2s}
+nav a:hover{color:var(--ink)}
+
+/* Unified IDE Window Hero Section */
+.hero-window {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 14px;
+  padding: 18px 24px 24px;
+  margin: 10px 0 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+}
+
+/* Dots on Left, Title on Right */
+.window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--code-border);
+  direction: ltr;
+}
+.dots-container {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.code-title {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: var(--mute);
+  font-weight: 500;
+}
+
+.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:28px;align-items:center}
+h1{font-size:clamp(34px,6.5vw,64px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:0 0 10px}
+.lead{font-size:clamp(15px,1.8vw,18px);color:var(--mute);max-width:32em;margin:0 0 18px}
+.typing-text{color:var(--ink);font-weight:600;border-bottom:2px solid var(--ink)}
+
+/* Strict LTR Code Block */
+.hero-code-block {
+  font-family: 'Fira Code', monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px dashed var(--code-border);
+  direction: ltr;
+  text-align: left;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .hero-code-block { background: rgba(255, 255, 255, 0.03); }
+}
+:root[data-theme="dark"] .hero-code-block { background: rgba(255, 255, 255, 0.03); }
+
+.hero-code-block pre { margin: 0; white-space: pre-wrap; word-break: break-word; }
+.k { color: #e06c75; font-weight: 600; }
+.s { color: #98c379; }
+.p { color: #d19a66; }
+
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:2px solid var(--btn);color:var(--ink);background:transparent;transition:transform .2s ease, background-color .2s ease;cursor:pointer;font-size:14.5px}
+.btn.main{background:var(--btn);color:var(--btn-ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{fill:currentColor;flex-shrink:0}
+
+/* Filter Tabs */
+.filter-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--mute);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+h2{font-size:clamp(22px,2.5vw,26px);letter-spacing:-.02em;margin:0 0 14px}
+
+/* Project Bands */
+.band{padding:clamp(20px,3.5vw,32px) 0;transition:all 0.3s ease;position:relative;overflow:hidden}
+.band.hidden { display: none; }
+.band .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:16px 32px;align-items:center}
+.band h3{font-size:clamp(24px,3.8vw,40px);line-height:1.1;letter-spacing:-.025em;font-weight:800;margin:0 0 6px;transition:transform .3s ease}
+.band p{margin:0;max-width:28em;font-size:16px}
+.side{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{font:12px 'Fira Code',ui-monospace,monospace;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;transition:background .2s,color .2s}
+.tags span:hover{background:currentColor;color:var(--b)}
+
+.band a.go{font-weight:800;font-size:16px;text-decoration:none;padding:2px 4px;margin-left:-4px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 2px no-repeat;transition:background-size .25s ease,color .25s ease;display:inline-flex;align-items:center;gap:6px}
+.band a.go .arrow{transition:transform 0.2s ease}
+.band a.go:hover .arrow{transform:translateX(5px)}
+.band a.go:hover{background-size:100% 100%;color:var(--b)}
+
+/* Code Background */
+.band::before {
+  content: attr(data-code);
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  position: absolute;
+  right: 3%;
+  bottom: 10%;
+  opacity: 0.14;
+  pointer-events: none;
+  white-space: pre;
+  text-align: right;
+  line-height: 1.4;
+  user-select: none;
+}
+
+/* Original Theme Colors */
+.b1{--b:#f6d9e1;background:var(--b);color:#8a2442}
+.b2{--b:#e8ed73;background:var(--b);color:#1b2380}
+.b3{--b:#dcebdf;background:var(--b);color:#1f4a33}
+.b4{--b:#f1c85a;background:var(--b);color:#4f3300}
+.b5{--b:#b5461c;background:var(--b);color:#fff}
+
+.tools,.contact{padding:36px 0 8px}
+.tool-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.tool-list h3{margin:0 0 2px;font-size:18px}
+.tool-list p{margin:0;color:var(--mute);font-size:15px}
+
+.contact{padding-bottom:32px}
+.contact p{color:var(--mute);max-width:30em;margin:0 0 16px}
+footer{border-top:1px solid var(--line);padding:18px 0 24px;color:var(--mute);font-size:14px;display:flex;justify-content:space-between;align-items:center}
+
+/* Responsive Media Queries */
+@media (max-width:850px){
+  .hero-grid{grid-template-columns:1fr;gap:20px}
+  .hero-window{padding:16px 18px 20px}
+}
+@media (max-width:720px){
+  .band .wrap{grid-template-columns:1fr;gap:14px}
+  .band::before{display:none}
+  .tools,.contact{padding:28px 0 8px}
+}
+
+.band:hover h3{transform:translateX(6px)}
+
+.theme{margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;cursor:pointer;color:var(--ink);transition:transform .4s ease}
+.theme:hover{transform:rotate(90deg)}
+
+/* Toast Notification */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--btn);
+  color: var(--btn-ink);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Main">
+    <a href="#projects">Projects</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
+    <button class="theme" id="theme" aria-label="Switch light or dark theme">Theme</button>
+  </nav>
+
+  <!-- Unified IDE Window -->
+  <header class="hero-window">
+    <div class="window-header">
+      <!-- Dots placed on the Left -->
+      <div class="dots-container">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <span class="code-title">developer.ts</span>
+    </div>
+    
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>Zaya Al-Samarrai</h1>
+        <p class="lead">Web Developer building <span class="typing-text" id="typewriter"></span></p>
+        <div class="btns">
+          <a class="btn main" href="#projects">View projects</a>
+          <a class="btn" href="https://github.com/zaya1i" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+      
+      <!-- Code Snippet -->
+      <div class="hero-code-block">
+        <pre><code><span class="k">import</span> { Developer } <span class="k">from</span> <span class="s">'zaya'</span>;
+
+<span class="k">const</span> profile = {
+  <span class="p">role</span>: <span class="s">'Web Developer'</span>,
+  <span class="p">skills</span>: [<span class="s">'HTML'</span>, <span class="s">'CSS'</span>, <span class="s">'JS'</span>, <span class="s">'3D'</span>],
+  <span class="p">status</span>: <span class="s">'Ready to build'</span>
+};</code></pre>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Category Filter -->
+  <div class="filter-container">
+    <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+    <button class="filter-btn" onclick="filterProjects('menu', this)">Menus</button>
+    <button class="filter-btn" onclick="filterProjects('web3d', this)">3D & Web</button>
+    <button class="filter-btn" onclick="filterProjects('app', this)">Apps</button>
+  </div>
+</div>
+
+<main id="projects">
+  <!-- Strawberry House Menu -->
+  <section class="band b1" data-category="menu" data-code="&lt;Menu responsive={true} /&gt;&#10;const domain = 'menupage.tech';">
+    <div class="wrap">
+      <div>
+        <h3>Strawberry House Menu</h3>
+        <p>A playful digital menu for a restaurant and tea room: breakfast, lunch, salads, drinks and desserts, designed for phones.</p>
+      </div>
+      <div class="side">
+        <div class="tags"><span>Web</span><span>Custom domain</span></div>
+        <a class="go" href="https://menupage.tech" target="_blank" rel="noopener">Visit menupage.tech <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Complete Shelf -->
+  <section class="band b2" data-category="web3d" data-code="import * as THREE from 'three';&#10;scene.add(bookshelf3D);">
+    <div class="wrap">
+      <div>
+        <h3>The Complete Shelf</h3>
+        <p>An interactive 3D bookshelf with seven original short stories. Open a book, spin the scene and read.</p>
+      </div>
+      <div class="side">
+        <div class="tags"><span>Three.js</span><span>Netlify</span></div>
+        <a class="go" href="https://booksshelf7.netlify.app" target="_blank" rel="noopener">Visit the shelf <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Fridge -->
+  <section class="band b3" data-category="app" data-code="const fridge = [&#10; 'protein', 'veggies'&#10;];">
+    <div class="wrap">
+      <div>
+        <h3>Smart Fridge</h3>
+        <p>See what is in your fridge at a glance, sorted into proteins, vegetables, fruits and dairy.</p>
+      </div>
+      <div class="side">
+        <div class="tags"><span>Replit</span></div>
+        <a class="go" href="https://foodwith.me" target="_blank" rel="noopener">Visit foodwith.me <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zaya's Golden Birthday -->
+  <section class="band b4" data-category="web3d" data-code="function sendWish(msg) {&#10; return 'Saved ✨';&#10;}">
+    <div class="wrap">
+      <div>
+        <h3>Zaya's Golden Birthday</h3>
+        <p>A birthday page where visitors write a warm wish and leave a small memory behind.</p>
+      </div>
+      <div class="side">
+        <div class="tags"><span>GitHub Pages</span></div>
+        <a class="go" href="https://zaya1i.github.io/GoldenBirthday/" target="_blank" rel="noopener">Visit the page <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kerala Curry House -->
+  <section class="band b5" data-category="menu" data-code="const dishes = [&#10; 'Qoozi', 'Curry'&#10;];">
+    <div class="wrap">
+      <div>
+        <h3>Iraqi Menu</h3>
+        <p>A restaurant menu with swipeable dish cards and search, featuring Iraqi dishes like qoozi.</p>
+      </div>
+      <div class="side">
+        <div class="tags"><span>Replit</span></div>
+        <a class="go" href="https://iraqi-menu--zanz1izanz.replit.app" target="_blank" rel="noopener">Visit the menu <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <section class="tools" id="tools">
+    <h2>Tools</h2>
+    <div class="tool-list">
+      <div><h3>Replit</h3><p>Building and deploying apps</p></div>
+      <div><h3>Antigravity</h3><p>AI-assisted development</p></div>
+      <div><h3>VS Code</h3><p>Writing and running projects locally</p></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Get in touch</h2>
+    <p>Have a project or an idea? Message me on Telegram or find my code on GitHub.</p>
+    <div class="btns">
+      <a class="btn main" href="https://t.me/zaya1i" target="_blank" rel="noopener">@zaya1i on Telegram</a>
+      <a class="btn" href="https://github.com/zaya1i" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        github.com/zaya1i ↗
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Zaya Al-Samarrai</div>
+  </footer>
+</div>
+
+<!-- Toast Container -->
+<div id="toast">Copied to clipboard!</div>
+
+<script>
+// Dynamic Typewriter Effect
+const phrases = [
+  "fast & easy-to-use websites.",
+  "interactive 3D stories.",
+  "smart digital menus.",
+  "clean web applications."
+];
+let phraseIdx = 0, charIdx = 0, isDeleting = false;
+const typewriter = document.getElementById("typewriter");
+
+function type() {
+  const current = phrases[phraseIdx];
+  if (isDeleting) {
+    typewriter.textContent = current.substring(0, charIdx - 1);
+    charIdx--;
+  } else {
+    typewriter.textContent = current.substring(0, charIdx + 1);
+    charIdx++;
+  }
+
+  let speed = isDeleting ? 40 : 80;
+  if (!isDeleting && charIdx === current.length) {
+    speed = 2000;
+    isDeleting = true;
+  } else if (isDeleting && charIdx === 0) {
+    isDeleting = false;
+    phraseIdx = (phraseIdx + 1) % phrases.length;
+    speed = 500;
+  }
+  setTimeout(type, speed);
+}
+type();
+
+// Project Filtering Logic
+function filterProjects(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const bands = document.querySelectorAll('.band');
+  bands.forEach(band => {
+    if (category === 'all' || band.getAttribute('data-category') === category) {
+      band.classList.remove('hidden');
+    } else {
+      band.classList.add('hidden');
+    }
+  });
+}
+
+// Copy To Clipboard Toast
+function copyText(text, message) {
+  navigator.clipboard.writeText(text);
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2500);
+}
+
+// Dark/Light Theme Switch
+(function(){
+  var r=document.documentElement;
+  try{var t=localStorage.getItem("theme");if(t)r.setAttribute("data-theme",t)}catch(e){}
+  document.getElementById("theme").addEventListener("click",function(){
+    var dark=r.getAttribute("data-theme")?r.getAttribute("data-theme")==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+    var n=dark?"light":"dark";r.setAttribute("data-theme",n);
+    try{localStorage.setItem("theme",n)}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
